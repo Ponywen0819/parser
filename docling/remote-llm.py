@@ -12,6 +12,7 @@ from docling.datamodel.pipeline_options import (
 from docling.datamodel.pipeline_options_vlm_model import ApiVlmOptions, ResponseFormat
 from docling.document_converter import DocumentConverter, PdfFormatOption
 from docling.pipeline.vlm_pipeline import VlmPipeline
+import time
 
 def lms_vlm_options(model: str, prompt: str, format: ResponseFormat):
     options = ApiVlmOptions(
@@ -88,8 +89,14 @@ def lms_olmocr_vlm_options(model: str):
 def main():
     logging.basicConfig(level=logging.INFO)
 
-    model = "gemma-3-4b-it-q4_0"
-    source = "https://arxiv.org/pdf/2507.06211"
+    # model = "gemma-3-4b-it-q4_0"
+    # model="olmocr-7b-0225-preview"
+    model 
+    source = "https://arxiv.org/pdf/2501.17887" # 8 page
+    # source = "https://arxiv.org/pdf/2507.06230" # 20 pages
+    # source = "https://arxiv.org/pdf/2507.06211" # 66 pages
+    
+    
     # data_folder = Path(__file__).parent / "../../tests/data"
     # input_doc_path = data_folder / "pdf/2507.06211.pdf"
     # input_doc_path = source
@@ -122,7 +129,7 @@ def main():
     # Example using the OlmOcr (dynamic prompt) model with LM Studio:
     # (uncomment the following lines)
     pipeline_options.vlm_options = lms_olmocr_vlm_options(
-        model="olmocr-7b-0225-preview",
+        model=model,
     )
 
     # Example using the Granite Vision model with Ollama:
@@ -140,6 +147,8 @@ def main():
     # )
 
     # Create the DocumentConverter and launch the conversion.
+
+    start_time = time.time()
     doc_converter = DocumentConverter(
         format_options={
             InputFormat.PDF: PdfFormatOption(
@@ -149,8 +158,12 @@ def main():
         }
     )
     result = doc_converter.convert(source)
-    print(result.document.export_to_markdown())
+    with open("result.md", "w") as f:
+        f.write(result.document.export_to_text())
 
+    end_time = time.time() - start_time
+
+    print(f"Total time: {end_time:.2f} seconds")
 
 if __name__ == "__main__":
     main()

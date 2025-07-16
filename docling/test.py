@@ -15,9 +15,9 @@ _log = logging.getLogger(__name__)
 
 output_dir = Path("./result")
 # source = "../insurance/1.pdf"  # document per local path or URL
-# source = "https://arxiv.org/pdf/2501.17887"
+source = "https://arxiv.org/pdf/2501.17887"
 # source = "https://arxiv.org/pdf/2507.06230" # 20 pages
-source = "https://arxiv.org/pdf/2507.06211" # 66 page
+# source = "https://arxiv.org/pdf/2507.06211" # 66 page
 start_time = time.time()
 
 model = "gemma-3-4b-it-q4_0"
