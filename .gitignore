@@ -1,0 +1,12 @@
+
+__pycache__/
+
+.venv/
+
+insurance/
+
+logs/
+
+minerU/result/
+
+pdfs/
