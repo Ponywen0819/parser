@@ -91,7 +91,6 @@ def main():
 
     # model = "gemma-3-4b-it-q4_0"
     # model="olmocr-7b-0225-preview"
-    model 
     source = "https://arxiv.org/pdf/2501.17887" # 8 page
     # source = "https://arxiv.org/pdf/2507.06230" # 20 pages
     # source = "https://arxiv.org/pdf/2507.06211" # 66 pages

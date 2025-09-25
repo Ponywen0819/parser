@@ -6,8 +6,8 @@ from docling.datamodel.pipeline_options import (
 from docling.document_converter import DocumentConverter, PdfFormatOption
 from docling.pipeline.vlm_pipeline import VlmPipeline
 
-source = "https://arxiv.org/pdf/2501.17887"
-# source = "https://arxiv.org/pdf/2507.06230" # 20 pages
+# source = "https://arxiv.org/pdf/2501.17887"
+source = "https://arxiv.org/pdf/2507.06230" # 20 pages
 # source = "https://arxiv.org/pdf/2507.06211" # 66 page
 
 pipeline_options = VlmPipelineOptions(
@@ -25,4 +25,7 @@ converter = DocumentConverter(
 
 doc = converter.convert(source=source).document
 
-print(doc.export_to_markdown())
+with open("result_20.md", "w") as f:
+    f.write(doc.export_to_text())
+
+# print(doc.export_to_markdown())

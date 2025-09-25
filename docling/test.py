@@ -24,7 +24,7 @@ model = "gemma-3-4b-it-q4_0"
 # model = "gemma-3-12b-it-q4_0"
 
 options = ApiVlmOptions(
-    url="http://127.0.0.1:8080/v1/chat/completions",  # the default Ollama endpoint
+    # url="http://127.0.0.1:8080/v1/chat/completions",  # the default Ollama endpoint
     params=dict(
         model=model,
     ),
@@ -34,7 +34,7 @@ options = ApiVlmOptions(
     response_format=ResponseFormat.MARKDOWN,
 )
 pipeline_options = VlmPipelineOptions(
-    enable_remote_services=True,
+    # enable_remote_services=True,
     vlm_options=options,
     # images_scale=1.0,
     # generate_page_images=True,
@@ -54,6 +54,9 @@ converter = DocumentConverter(
 result = converter.convert(source)
 print(result.document.export_to_markdown())
 # print(result.document.export_to_html())
+
+with open("result_8.md", "w") as f:
+    f.write(result.document.export_to_text())
 
 end_time = time.time() - start_time
 

@@ -9,3 +9,9 @@ logs/
 
 minerU/result/
 
+
+*.jpeg
+
+*.png
+
+*.pdf
